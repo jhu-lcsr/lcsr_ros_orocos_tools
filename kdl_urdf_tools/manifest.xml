@@ -22,7 +22,7 @@
   <depend package="angles" />
 
   <export>
-    <cpp cflags="-I${prefix}/include" lflags="-L${prefix}/lib -Wl,-rpath,${prefix}/lib -lterse_roscpp"/>
+    <cpp cflags="-I${prefix}/include" lflags="-L${prefix}/lib -Wl,-rpath,${prefix}/lib -lkdl_urdf_tools"/>
   </export>
 
 </package>

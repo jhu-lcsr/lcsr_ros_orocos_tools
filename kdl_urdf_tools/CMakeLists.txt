@@ -24,28 +24,30 @@ endif()
 
 # Set the CMAKE_PREFIX_PATH in case you're not using Orocos through ROS
 # for helping these find commands find RTT.
-find_package(OROCOS-RTT REQUIRED ${RTT_HINTS})
+#find_package(OROCOS-RTT REQUIRED ${RTT_HINTS})
 
 # Defines the orocos_* cmake macros. See that file for additional
 # documentation.
-include(${OROCOS-RTT_USE_FILE_PATH}/UseOROCOS-RTT.cmake)
+#include(${OROCOS-RTT_USE_FILE_PATH}/UseOROCOS-RTT.cmake)
 
 # Find the rosbuild_xenomai package
-rosbuild_find_ros_package(rosbuild_xenomai)
-include(${rosbuild_xenomai_PACKAGE_PATH}/rosbuild_xenomai.cmake)
+#rosbuild_find_ros_package(rosbuild_xenomai)
+#include(${rosbuild_xenomai_PACKAGE_PATH}/rosbuild_xenomai.cmake)
 
 # Additional headers:
 # Installs in the include/orocos/kdl_urdf_tools/ directory
-orocos_install_headers(
-  include/kdl_urdf_tools/tools.h 
-  ) 
+#orocos_install_headers(
+#  include/kdl_urdf_tools/tools.h 
+#  ) 
 
 # Building a normal library (optional):
 # Creates a library libsupport-<target>.so and installs it in
 # lib/
-orocos_library(kdl_urdf_tools src/tools.cpp) 
-if($ENV{OROCOS_TARGET} STREQUAL "xenomai") 
-  rosbuild_add_xenomai_posix_flags()
-endif()
+#orocos_library(kdl_urdf_tools src/tools.cpp) 
+#if($ENV{OROCOS_TARGET} STREQUAL "xenomai") 
+  #  rosbuild_add_xenomai_posix_flags()
+#endif()
 
-orocos_generate_package()
+#orocos_generate_package()
+
+rosbuild_add_library(kdl_urdf_tools src/tools.cpp)
