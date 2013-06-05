@@ -1,38 +1,21 @@
-#
-# The find_package macro for Orocos-RTT works best with
-# cmake >= 2.6.3
-#
-cmake_minimum_required(VERSION 2.6.3)
-
-#
-# This creates a standard cmake project. You may extend this file with
-# any cmake macro you see fit.
-#
+# http://ros.org/doc/groovy/api/catkin/html/user_guide/supposed.html
+cmake_minimum_required(VERSION 2.8.3)
 project(rtt_ros_tools)
+# Load catkin and all dependencies required for this package
+# TODO: remove all from COMPONENTS that are not catkin packages.
+find_package(catkin REQUIRED COMPONENTS roscpp rtt rtt_rosnode)
 
-#
-# Do setup in case of ros package, If ROS_ROOT is set, it is
-# recommended to use RTT/OCL through the ros packages.
-#
-set (ROS_ROOT $ENV{ROS_ROOT} )
-if (ROS_ROOT)
-  include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
-  rosbuild_init()
-  rosbuild_find_ros_package( rtt )
-  set( RTT_HINTS HINTS ${rtt_PACKAGE_PATH}/install )
-endif()
+include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})#
 
 # Set the CMAKE_PREFIX_PATH in case you're not using Orocos through ROS
 # for helping these find commands find RTT.
 find_package(OROCOS-RTT REQUIRED ${RTT_HINTS})
 
+find_package(catkin COMPONENTS xenomai_ros)
+
 # Defines the orocos_* cmake macros. See that file for additional
 # documentation.
 include(${OROCOS-RTT_USE_FILE_PATH}/UseOROCOS-RTT.cmake)
-
-# Find the rosbuild_xenomai package
-rosbuild_find_ros_package(rosbuild_xenomai)
-include(${rosbuild_xenomai_PACKAGE_PATH}/rosbuild_xenomai.cmake)
 
 # Additional headers:
 # Installs in the include/orocos/rtt_ros_tools/ directory
@@ -51,7 +34,19 @@ orocos_library(rtt_ros_tools
   src/params.cpp
   src/throttles.cpp) 
 if($ENV{OROCOS_TARGET} STREQUAL "xenomai") 
-  rosbuild_add_xenomai_posix_flags()
+  add_xenomai_posix_flags()
 endif()
 
 orocos_generate_package()
+
+# TODO: fill in what other packages will need to use this package
+## DEPENDS: system dependencies of this project that dependent projects also need
+## CATKIN_DEPENDS: catkin_packages dependent projects also need
+## INCLUDE_DIRS: 
+## LIBRARIES: libraries you create in this project that dependent projects also need
+catkin_package(
+    DEPENDS roscpp rtt rtt_rosnode
+    CATKIN_DEPENDS # TODO
+    INCLUDE_DIRS # TODO include
+    LIBRARIES # TODO
+)
