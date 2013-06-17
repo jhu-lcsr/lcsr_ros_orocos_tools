@@ -7,7 +7,7 @@ find_package(catkin REQUIRED COMPONENTS roscpp orocos_kdl kdl_parser std_msgs se
 
 include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})#
 
-add_library(kdl_urdf_tools src/tools.cpp)
+add_library(${PROJECT_NAME} src/tools.cpp)
 
 # TODO: fill in what other packages will need to use this package
 ## DEPENDS: system dependencies of this project that dependent projects also need
@@ -18,5 +18,18 @@ catkin_package(
     DEPENDS roscpp orocos_kdl kdl_parser std_msgs sensor_msgs geometry_msgs trajectory_msgs tf tf_conversions angles
     CATKIN_DEPENDS # TODO
     INCLUDE_DIRS include
-    LIBRARIES kdl_urdf_tools
+    LIBRARIES ${PROJECT_NAME}
 )
+
+install(TARGETS ${PROJECT_NAME} 
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+  )
+
+# Mark cpp header files for installation
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  FILES_MATCHING PATTERN "*.h"
+  )
+
