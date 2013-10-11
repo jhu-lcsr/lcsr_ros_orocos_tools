@@ -1,25 +1,20 @@
-# http://ros.org/doc/groovy/api/catkin/html/user_guide/supposed.html
 cmake_minimum_required(VERSION 2.8.3)
 project(kdl_urdf_tools)
-# Load catkin and all dependencies required for this package
-# TODO: remove all from COMPONENTS that are not catkin packages.
-find_package(catkin REQUIRED COMPONENTS roscpp orocos_kdl kdl_parser std_msgs sensor_msgs geometry_msgs trajectory_msgs tf tf_conversions angles)
 
-include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})#
+find_package(Orocos-KDL REQUIRED)
 
-add_library(${PROJECT_NAME} src/tools.cpp)
+find_package(catkin REQUIRED COMPONENTS 
+  roscpp kdl_parser std_msgs sensor_msgs geometry_msgs trajectory_msgs tf tf_conversions angles)
 
-# TODO: fill in what other packages will need to use this package
-## DEPENDS: system dependencies of this project that dependent projects also need
-## CATKIN_DEPENDS: catkin_packages dependent projects also need
-## INCLUDE_DIRS: 
-## LIBRARIES: libraries you create in this project that dependent projects also need
 catkin_package(
-    DEPENDS roscpp orocos_kdl kdl_parser std_msgs sensor_msgs geometry_msgs trajectory_msgs tf tf_conversions angles
-    CATKIN_DEPENDS # TODO
-    INCLUDE_DIRS include
-    LIBRARIES ${PROJECT_NAME}
+  DEPENDS kdl
+  CATKIN_DEPENDS roscpp kdl_parser std_msgs sensor_msgs geometry_msgs trajectory_msgs tf tf_conversions angles
+  INCLUDE_DIRS include
+  LIBRARIES ${PROJECT_NAME}
 )
+
+include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${Orocos-KDL_INCLUDE_DIRS})#
+add_library(${PROJECT_NAME} src/tools.cpp)
 
 install(TARGETS ${PROJECT_NAME} 
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}

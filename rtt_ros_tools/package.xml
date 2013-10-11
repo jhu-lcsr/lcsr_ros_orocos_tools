@@ -1,16 +1,15 @@
 <package>
   <name>rtt_ros_tools</name>
   <version>0.1.0</version>
-  <description>This package contains utilities and helper libraries for use in OROCOS/RTT
+  <description>
+    This package contains utilities and helper libraries for use in OROCOS/RTT
     components in a ROS application.
     
-    See the C++ API for more details.</description>
+    See the C++ API for more details.
+  </description>
   <maintainer email="jbo@Jhu.edu">Jonathan Bohren</maintainer>
 
   <license>BSD</license>
-
-  <url type="website">http://ros.org/wiki/rtt_ros_tools</url>
-  <!-- <url type="bugtracker"></url> -->
 
   <author>Jonathan Bohren</author>
 
@@ -26,12 +25,4 @@
   <run_depend>rtt</run_depend>
   <run_depend>rtt_rosnode</run_depend>
 
-  <!-- Dependencies needed only for running tests. -->
-  <!-- <test_depend>roscpp</test_depend> -->
-  <!-- <test_depend>rtt</test_depend> -->
-  <!-- <test_depend>rtt_rosnode</test_depend> -->
-
-  <export>
-
-  </export>
 </package>
