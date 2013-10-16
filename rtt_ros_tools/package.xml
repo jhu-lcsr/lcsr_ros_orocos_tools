@@ -18,11 +18,16 @@
   <!-- Dependencies needed to compile this pacakge. -->
   <build_depend>roscpp</build_depend>
   <build_depend>rtt</build_depend>
-  <build_depend>rtt_rosnode</build_depend>
+  <build_depend>rtt_ros</build_depend>
 
   <!-- Dependencies needed after this package is compiled. -->
   <run_depend>roscpp</run_depend>
   <run_depend>rtt</run_depend>
   <run_depend>rtt_rosnode</run_depend>
 
+  <export>
+    <rtt_ros>
+      <plugin_depend>rtt_rosnode</plugin_depend>
+    </rtt_ros>
+  </export>
 </package>

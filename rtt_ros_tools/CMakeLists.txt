@@ -1,15 +1,12 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(rtt_ros_tools)
 
-find_package(OROCOS-RTT REQUIRED)
-include(${OROCOS-RTT_USE_FILE_PATH}/UseOROCOS-RTT.cmake)
-
 find_package(catkin REQUIRED 
-  COMPONENTS roscpp rtt_rosnode)
+  COMPONENTS roscpp rtt_ros)
 
 catkin_package(
   DEPENDS  rtt  
-  CATKIN_DEPENDS roscpp rtt_rosnode
+  CATKIN_DEPENDS roscpp
   INCLUDE_DIRS  include
 )
 
