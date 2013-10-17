@@ -48,7 +48,7 @@ bool rtt_ros_tools::PeriodicThrottle::ready(double throttle_period)
 {
   // Check timer
   if( throttle_period_ > 0.0
-      && RTT::os::TimeService::Instance()->secondsSince(last_time_) > throttle_period  )
+      && RTT::os::TimeService::Instance()->secondsSince(last_time_) >= throttle_period  )
   {
     // Store this time
     last_time_ = RTT::os::TimeService::Instance()->getTicks();

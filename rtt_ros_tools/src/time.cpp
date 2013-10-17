@@ -39,7 +39,11 @@ ros::Time rtt_ros_tools::ros_rt_now() {
 #ifdef __XENO__
   // Use Xenomai 2.6 feature to get the NTP-synched real-time clock
   timespec ts = {0,0};
-  clock_gettime(CLOCK_HOST_REALTIME, &ts);
+  int ret = clock_gettime(CLOCK_HOST_REALTIME, &ts);
+  if(ret) {
+    ts.tv_sec = 1;
+    ts.tv_nsec = errno;
+  }
   return ros::Time(ts.tv_sec, ts.tv_nsec);
 #else 
   // Use standard RTT API to get the time
