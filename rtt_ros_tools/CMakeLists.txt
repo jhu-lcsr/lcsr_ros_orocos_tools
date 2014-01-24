@@ -14,9 +14,9 @@ include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})#
 
 if(OROCOS_TARGET STREQUAL "xenomai")
   find_package(Xenomai REQUIRED)
-  add_definitions(${Xenomai_DEFINITIONS})
-  include_directories(${Xenomai_INCLUDE_DIRS})
-  link_directories(${Xenomai_LIBRARY_DIRS})
+  add_definitions(${Xenomai_POSIX_DEFINITIONS})
+  include_directories(${Xenomai_POSIX_INCLUDE_DIRS})
+  link_directories(${Xenomai_POSIX_LIBRARY_DIRS})
 endif()
 
 # Building a normal library (optional):
@@ -31,9 +31,9 @@ target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
 if(OROCOS_TARGET STREQUAL "xenomai")
   set_target_properties(${PROJECT_NAME}
-    PROPERTIES LINK_FLAGS ${Xenomai_LDFLAGS_POSIX})
+    PROPERTIES LINK_FLAGS ${Xenomai_POSIX_LDFLAGS})
   target_link_libraries(${PROJECT_NAME}
-    ${Xenomai_LIBRARIES_POSIX})
+    ${Xenomai_POSIX_LIBRARIES})
 endif()
 
 # Additional headers:
