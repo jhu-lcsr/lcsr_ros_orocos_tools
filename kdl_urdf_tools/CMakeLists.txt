@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(kdl_urdf_tools)
 
-find_package(Orocos-KDL REQUIRED)
+find_package(orocos_kdl REQUIRED)
 
 find_package(catkin REQUIRED COMPONENTS 
   roscpp kdl_parser std_msgs sensor_msgs geometry_msgs trajectory_msgs tf tf_conversions angles)
@@ -13,7 +13,7 @@ catkin_package(
   LIBRARIES ${PROJECT_NAME}
 )
 
-include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${Orocos-KDL_INCLUDE_DIRS})#
+include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${orocos_kdl_INCLUDE_DIRS})#
 add_library(${PROJECT_NAME} src/tools.cpp)
 
 install(TARGETS ${PROJECT_NAME} 
