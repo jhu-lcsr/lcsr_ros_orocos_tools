@@ -17,7 +17,7 @@
 
   <!-- Dependencies needed to compile this pacakge. -->
   <build_depend>roscpp</build_depend>
-  <build_depend>kdl</build_depend>
+  <build_depend>orocos_kdl</build_depend>
   <build_depend>kdl_parser</build_depend>
   <build_depend>std_msgs</build_depend>
   <build_depend>sensor_msgs</build_depend>
@@ -29,7 +29,7 @@
 
   <!-- Dependencies needed after this package is compiled. -->
   <run_depend>roscpp</run_depend>
-  <run_depend>kdl</run_depend>
+  <run_depend>orocos_kdl</run_depend>
   <run_depend>kdl_parser</run_depend>
   <run_depend>std_msgs</run_depend>
   <run_depend>sensor_msgs</run_depend>
