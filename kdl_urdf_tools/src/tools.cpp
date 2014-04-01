@@ -45,6 +45,11 @@ bool kdl_urdf_tools::initialize_kinematics_from_urdf(
     KDL::Tree &kdl_tree,
     urdf::Model &urdf_model)
 {
+  if(robot_description.length() == 0) {
+    ROS_ERROR("URDF string is empty.");
+    return false;
+  }
+
   // Construct an URDF model from the xml string
   urdf_model.initString(robot_description);
 
