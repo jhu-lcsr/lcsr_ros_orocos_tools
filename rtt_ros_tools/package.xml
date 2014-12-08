@@ -1,6 +1,6 @@
 <package>
   <name>rtt_ros_tools</name>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
   <description>
     This package contains utilities and helper libraries for use in OROCOS/RTT
     components in a ROS application.

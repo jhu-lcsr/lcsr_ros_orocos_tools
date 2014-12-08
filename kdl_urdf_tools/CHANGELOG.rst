@@ -2,8 +2,8 @@
 Changelog for package kdl_urdf_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.0 (2014-12-08)
+------------------
 * Adding error message and preventing kdl_parser segfault
 * updating package.xml dep
 * Going back to standard kdl usage
